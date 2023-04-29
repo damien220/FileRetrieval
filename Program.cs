@@ -1,3 +1,6 @@
+using FileRetrieval;
+using System.Data.Entity.Core.Metadata.Edm;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -35,9 +38,19 @@ app.MapGet("/weatherforecast", () =>
 })
 .WithName("GetWeatherForecast");
 
+DB db = new DB();
+//db.createNewDatabase();
+//db.connectToDatabase();
+//db.fillTable();
+//db.printHighscores();
 app.Run();
 
 internal record WeatherForecast(DateTime Date, int TemperatureC, string? Summary)
 {
     public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+}
+
+internal record GetFileFrmDB(int id)
+{
+
 }
